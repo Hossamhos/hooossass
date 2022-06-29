@@ -5,24 +5,12 @@ import socket
 import psutil
 import platform
 from pyrogram import Client, filters
+from config import BOT_NAME as bn, BOT_USERNAME
 
 def humanbytes(size):
-    """Convert Bytes To Bytes So That Human Can Read It"""
-    if not size:
-        return ""
-    power = 2 ** 10
-    raised_to_pow = 0
-    dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
 
-    while size > power:
-        size /= power
-        raised_to_pow += 1
-    return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
-
-#Module by AnonymousBoy1025
-# FETCH SYSINFO
-
-@Client.on_message(command(["sysinfo"]) & ~filters.edited)
+@Client.on_message(command(["sysinfo", f"sysinfo@{BOT_USERNAME}"]) & ~filters.edited)
+@sudo_users_only
 async def give_sysinfo(client, message):
     splatform = platform.system()
     platform_release = platform.release()
@@ -35,14 +23,14 @@ async def give_sysinfo(client, message):
     ram = humanbytes(round(psutil.virtual_memory().total))
     cpu_freq = psutil.cpu_freq().current
     if cpu_freq >= 1000:
-        cpu_freq = f"{round(cpu_freq / 1000, 2)}ɢʜᴢ"
-    else:​
-        cpu_freq = f"{round(cpu_freq, 2)}ᴍʜᴢ"
+        cpu_freq = f"{round(cpu_freq / 1000, 2)}GHz"
+    else:
+        cpu_freq = f"{round(cpu_freq, 2)}MHz"
     du = psutil.disk_usage(client.workdir)
     psutil.disk_io_counters()
     disk = f"{humanbytes(du.used)} / {humanbytes(du.total)} " f"({du.percent}%)"
     cpu_len = len(psutil.Process().cpu_affinity())
-    wtf = f""" **•• sʏsᴛᴇᴍ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ••**
+    somsg = f""" **•• sʏsᴛᴇᴍ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ••**
 ┏━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┣★ **ᴘʟᴀᴛꜰᴏʀᴍ :** `{splatform}`
 ┣★ **ᴘʟᴀᴛꜰᴏʀᴍ ʀᴇʟᴇᴀsᴇ :** `{platform_release}`
@@ -58,4 +46,4 @@ async def give_sysinfo(client, message):
 ┣★ **ᴅɪsᴋ :** `{disk}`
 ┗━━━━━━━━━━━━━━━━━━━━━━━━┛
     """
-    await message.reply(wtf)
+    await message.reply(somsg)
