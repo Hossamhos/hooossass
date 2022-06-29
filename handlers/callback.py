@@ -33,10 +33,11 @@ async def cbstart(_, query: CallbackQuery):
                     InlineKeyboardButton(
                         "- جـروب الـدعـم .", url=f"https://t.me/{SUPPORT_GROUP}"
                     )
-                ],[
+                  ],[
                     InlineKeyboardButton(
-                        "- الاوامـر .", callback_data="cbcmds"),
+                        "- الاوامـر .", callback_data="cbcmds"
                     ),
+                    
                     InlineKeyboardButton(
                         "- الـمـطـور .", url="https://t.me/{OWNER_NAME}"
                     )]
