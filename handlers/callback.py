@@ -4,7 +4,7 @@ from helpers.filters import command
 from helpers.decorators import fallen
 from config import BOT_NAME as bn, BOT_USERNAME as bu, SUPPORT_GROUP, OWNER_ID, START_IMG, OWNER_NAME, UPDATES_CHANNEL, ASSISTANT_NAME
 from pyrogram import Client, filters
-from program.utils.inline import menu_markup
+from pyrogram.utils.inline import menu_markup
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 
