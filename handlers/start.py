@@ -2,9 +2,9 @@ import asyncio
 
 from helpers.filters import command
 from helpers.decorators import fallen
-from config import BOT_NAME as bn, BOT_USERNAME as bu, SUPPORT_GROUP, OWNER_ID, START_IMG, OWNER_NAME, UPDATES_CHANNEL
+from config import BOT_NAME as bn, BOT_USERNAME as bu, SUPPORT_GROUP, OWNER_ID, START_IMG, OWNER_NAME, UPDATES_CHANNEL, ASSISTANT_NAME
 from pyrogram import Client, filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 
 @Client.on_message(command("start") & filters.private & ~filters.group & ~filters.edited)
@@ -31,10 +31,11 @@ async def start_(client: Client, message: Message):
                     InlineKeyboardButton(
                         "- جـروب الـدعـم .", url=f"https://t.me/{SUPPORT_GROUP}"
                     )
-                ],[
+                  ],[
                     InlineKeyboardButton(
-                        "- الاوامـر .", callback_data="cbcmds"),
+                        "- الاوامـر .", callback_data="cbcmds"
                     ),
+                    
                     InlineKeyboardButton(
                         "- الـمـطـور .", url="https://t.me/{OWNER_NAME}"
                     )]
