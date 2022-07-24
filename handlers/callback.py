@@ -22,7 +22,7 @@ async def cbstart(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton(
-                        "- الاوامـر .", callback_data="cbcmds"
+                        "🥺 ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ​ 🥺", url=f"https://t.me/{bu}?startgroup=true"
                        ),
                   ],[
                     InlineKeyboardButton(
@@ -33,11 +33,11 @@ async def cbstart(_, query: CallbackQuery):
                     )
                   ],[
                     InlineKeyboardButton(
-                        "- اضفني لمجموعتك .", url=f"https://t.me/{bu}?startgroup=true"
+                        "- الاوامـر .", callback_data="cbcmds"
                     ),
                     
                     InlineKeyboardButton(
-                        "- الـمـطـور .", url="https://t.me/{OWNER_NAME}"
+                        "- الـمـطـور .", url="https://t.me/H_OS_S_AM"
                     )]
             ]
        ),
